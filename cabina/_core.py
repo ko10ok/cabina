@@ -17,6 +17,7 @@ from typing import (
 
 from niltype import Nil, NilType
 
+from ._future_transparent_value import FutureTransparentValue
 from ._future_value import FutureValue
 from .errors import (
     ConfigAttrError,
@@ -181,6 +182,8 @@ class MetaBase(type):
         """
         attr = super().__getattribute__(name)
         if isinstance(attr, FutureValue):
+            return attr.get()
+        if isinstance(attr, FutureTransparentValue):
             return attr.get()
         return attr
 
