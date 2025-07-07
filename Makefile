@@ -17,7 +17,7 @@ publish:
 
 .PHONY: test
 test:
-	python3 -m pytest -s $(args)
+	python3 -m pytest -s
 
 .PHONY: coverage
 coverage:
